@@ -9,7 +9,6 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-#SampleApp::Application.config.secret_key_base = '7cf4d9c58d95c779de2606eeab2afdb26bd478801c24386ea9cd3fcb220c10d76bacdc971bed740c61c4fd36f6d03a3c3a5417ff094a0b87ee9a1d1ff91af2de'
 
 require 'securerandom'
 
@@ -27,3 +26,6 @@ def secure_token
 end
 
 SampleApp::Application.config.secret_key_base = secure_token
+
+#kld - removed based on tutorial example for sample_app
+#SampleApp::Application.config.secret_key_base = '30ef6ab3e9fb14d4bf7ef091c34082263e1ea0285e0fc4b99fc1250d290b58bc25f579eb530bcd2e90c817a31121c503de2f075f22affaf2d550c933b9d484ba'
