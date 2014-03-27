@@ -1,0 +1,155 @@
+/* This switches to the Bootstrap CSS framework to change */
+/* # the style layout of  */
+/* # http://localhost:3000/static_pages/home */
+
+/* Styles apply to sections like logo that could be defined in “app/views/layouts/application.html.erb” or moved into partials with separate files for each section like app/views/layouts/_header.html.erb”. */
+
+@import "bootstrap";
+
+/* Chapter 5 - Variable SCSS substitution for
+* From: color:  #999;
+* To:           color: $lightGray;     */
+
+/* Variable Definition */
+$lightGray: #999;
+$grayMediumLight: #eaeaea;
+$white: #fff;
+$gray: #555;
+$graydarker: #222;
+
+
+/* Add CSS for some universal styling */
+
+html {
+  overflow-y: scroll;
+}
+
+/* Puts 60 pixels at the top of the page  
+  Because of the navbar-fixed-top class in the header tag, Bootstrap fixes the navigation bar to the top of the page  
+ The padding serves to separate the main text from the navigation
+ */
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+
+/*  Listing 5.6 - original before nesting
+.center {               
+  text-align: center;     
+}                       
+
+.center h1 {             
+  margin-bottom: 10px;    
+}                         */
+
+/* Listing 5.6 - Nesting */
+/* Associates the center class with the text-align: center property. In other words, the dot . in .center indicates that the rule styles a class. */
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $lightGray;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+
+/* Listing 5.6 original before nesting */
+/* #logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  color: $white;
+  text-decoration: none;
+}                               */
+
+/* Listing 5.6 nesting of logo */
+/* logo was in app/views/layouts/application.html.erb " */
+/* logo now in app/views/layouts/_header.html.erb */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: $white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+
+/* footer */
+
+/* Listing 5.6 Nesting */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $lightGray;
+  a {
+    color: $gray;
+    &:hover {
+      color: $grayDarker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+

@@ -1,9 +1,38 @@
-SampleApp::Application.routes.draw do
+SampleApp::Application.routes.draw do  
+ 
+  # Listing 5.35
+  get "users/new"
+  
+  # These book examples don’t work
+  #root  'static_pages#home'  
+  #match '/', to: 'static_pages#home', via: 'get'
+  
+  # This works. But you need to use http://localhost:3000/ 
+  # instead of http://localhost:3000/sample_apps to display the page now.
+  #root :to => 'static_pages#home'
+
+  # This combination works with either 
+  # http://localhost:3000/ or http://localhost:3000/static_pages/home
+  root  'static_pages#home'
   get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/about"
-  get "static_pages/contact"
-  # The priority is based upon order of creation: first created -> highest priority.
+
+  match '/signup',  to: 'users#new',            via: 'get'
+
+  match '/help',    to: 'static_pages#help',    via: 'get'
+  match '/about',   to: 'static_pages#about',   via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  
+end
+
+  #Listing 5.24. & 5.26 Routes for static pages. 
+  # Replace get with match statements
+  #get "static_pages/home"
+  #get "static_pages/help"
+  #get "static_pages/about"
+  #get "static_pages/contact"
+
+
+# The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
@@ -57,4 +86,3 @@ SampleApp::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

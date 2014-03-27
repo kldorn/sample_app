@@ -1,13 +1,35 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
+ * This is a manifest file that'll be compiled 
+ * into application.css, 
+ * which will include all the files listed below.
  *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ * Any CSS and SCSS file within this directory, 
+ * lib/assets/stylesheets, 
+ * vendor/assets/stylesheets, or vendor/assets/stylesheets 
+ * of plugins, if any, 
+ * can be referenced here using a relative path.
  *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
+ * You're free to add application-wide styles to this file 
+ * and they'll appear at the top of the
+ * compiled file, but it's generally better 
+ * to create a new file per style scope.
  *
+ * The key lines here are actually CSS comments, 
+ * but they are used by Sprockets 
+ * to include the proper files:
+ */
+ /*
  *= require_self
  *= require_tree .
  */
+
+/* Once you’ve placed your assets 
+ *in their logical locations, 
+  *you can use manifest files to tell Rails 
+  * (via the Sprockets gem) how to combine them 
+  * to form single files. 
+  * (This applies to CSS and JavaScript but not to images.) 
+  * As an example, let’s take a look at the 
+  * default manifest file for app stylesheets 
+  * (Listing 5.15). 
+  */

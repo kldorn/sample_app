@@ -1,0 +1,19 @@
+<!--Listing 5.11. A partial for the site header -->
+<!--The _ before the file name is the universal convention for naming partials, and among other things makes it possible to identify all the partials in a directory at a glance.-->
+
+<!--Listing 5.27. Replace '#' with links -->
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">     
+      <%= link_to "sample app", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">          
+          <li><%= link_to "Home",    root_path %></li>
+          <li><%= link_to "Help",    help_path %></li>
+          <li><%= link_to "Sign in", '#' %></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

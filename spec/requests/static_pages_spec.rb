@@ -1,95 +1,54 @@
 require 'spec_helper'
 
-#  describe "GET /static_pages" do
-#    it "works! (now write some real specs)" do
-#      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-#      get static_pages_index_path
-#      response.status.should be(200)
-#    end
-#  end
-#end
-
 describe "Static pages" do
 
-  #Added from Listing 3.31
+  #5.3.4 Pretty RSpec
+  #Replace redundant expect(page). Do blocks with subject function ”
+  subject { page }
+
+  #Added from Listing 3.31 - Let function to define a variable
   let(:base_title) { "Ruby on Rails Tutorial Sample App" }
+
+  # Listing 5.29. A file for RSpec utilities with a full_title function. 
+  # Creates user defined full_title(page_title) function in folder: 
+  # spec/support/utilities.rb 
+  # full_title(page_title) function can be used in place of 
+  # let(:base_title) { "Ruby on Rails Tutorial Sample App" } variable definition
 
   describe "Home page" do
 
-    it "should have the content 'Sample App'" do
-      visit '/static_pages/home'
-      expect(page).to have_content('Sample App')
-    end
+    #5.3.4 Pretty RSpec
+    #Replace redundant “visit root_path” with “before { visit root_path }”
+    before { visit root_path }
 
-    #Added from Rails tutorial Listing 3.19
-    #Removed again from Rails tutorial Listing 4.4
-    #it "should have the title 'Home'" do
-    #  visit '/static_pages/home'
-    #  #expect(page).to have_title("Ruby on Rails Tutorial Sample App | Home")
-    #  expect(page).to have_title("#{base_title} | Home")
-    # end
-
-    #Added from Rails tutorial Listing 4.4
-    it "should have the base title" do
-      visit '/static_pages/home'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App")
-    end
-
-    it "should not have a custom page title" do
-      visit '/static_pages/home'
-      expect(page).not_to have_title('| Home')
-    end
-
+    it { should have_content('Sample App') }
+    it { should have_title(full_title('')) }
+    it { should_not have_title('| Home') }
   end
 
-describe "Help page" do
+  describe "Help page" do
+    before { visit help_path }
 
-    it "should have the content 'Help'" do
-      visit '/static_pages/help'
-      expect(page).to have_content('Help')
-    end
-
-    #Added from Rails tutorial Listing 3.19
-    it "should have the title 'Help'" do
-      visit '/static_pages/help'
-      #expect(page).to have_title("Ruby on Rails Tutorial Sample App | Help")
-      expect(page).to have_title("#{base_title} | Help")
-    end
-
+    it { should have_content('Help') }
+    #it { should have_title(full_title('Help')) }
+    it { should have_title("#{base_title} | Help") }
+   
+    #it "should have the title 'Help'" do     
+    #  expect(page).to have_title("#{base_title} | Help")
+    #end
   end
 
   describe "About page" do
+    before { visit about_path }
 
-    it "should have the content 'About Us'" do
-      visit '/static_pages/about'
-      expect(page).to have_content('About Us')
-    end
-
-    #Added from Rails tutorial Listing 3.19
-    it "should have the title 'About Us'" do
-      visit '/static_pages/about'
-      #expect(page).to have_title("Ruby on Rails Tutorial Sample App | About Us")
-      expect(page).to have_title("#{base_title} | About Us")
-    end
-    
-   end
-
-    #Added from Chap 3 exercizes
-    describe "Contact page" do
-
-    it "should have the content 'Contact'" do
-      visit '/static_pages/contact'
-      expect(page).to have_content('Contact')
-    end
-
-    #Added from Rails tutorial Listing 3.19
-    it "should have the title 'Contact'" do
-      visit '/static_pages/contact'
-      #expect(page).to have_title("Ruby on Rails Tutorial Sample App | Contact")
-      expect(page).to have_title("#{base_title} | Contact")
-    end
-
+    it { should have_content('About') }
+    it { should have_title(full_title('About Us')) }
   end
 
-end
+  describe "Contact page" do
+    before { visit contact_path }
 
+    it { should have_content('Contact') }
+    it { should have_title(full_title('Contact')) }
+  end
+end

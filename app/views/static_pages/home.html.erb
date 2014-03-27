@@ -1,6 +1,25 @@
+<!-- Original code removed by Listing 5.2 
 <h1>Sample App</h1>	
 	<p>
 		This is the home page for the
 		<a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
 		sample application.
-	</p>
+	</p> -->
+
+<!-- New code replaced by Listing 5.2 -->
+<div class="center hero-unit">
+  <h1>Welcome to the Sample App</h1>
+
+  <h2>
+    This is the home page for the
+    <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+    sample application.
+  </h2>
+
+  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+
+<!-- Image_tag helper -->
+<!-- takes path to image and optional hash options as arguments -->
+<!-- Sets the alt attribute of the image tag using symbols -->
+<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
