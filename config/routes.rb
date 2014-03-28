@@ -3,7 +3,8 @@ SampleApp::Application.routes.draw do
   # Listing 5.35
   get "users/new"
   
-  # These book examples don’t work
+  # These book examples are supposed to be exchangable
+  # Neither works in isolation.
   #root  'static_pages#home'  
   #match '/', to: 'static_pages#home', via: 'get'
   
@@ -11,7 +12,7 @@ SampleApp::Application.routes.draw do
   # instead of http://localhost:3000/sample_apps to display the page now.
   #root :to => 'static_pages#home'
 
-  # This combination works with either 
+  # This combination works with either. But you need both statements.
   # http://localhost:3000/ or http://localhost:3000/static_pages/home
   root  'static_pages#home'
   get "static_pages/home"
