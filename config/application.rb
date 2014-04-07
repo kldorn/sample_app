@@ -27,5 +27,12 @@ module SampleApp
 
     #Listing 5.4 - added 3/24/2014 - for asset pipeline compabitability
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+
+
+    #After Listing 6.29. The complete implementation for secure passwords. 
+    # Suggestion for getting rid of deprecation warning 
+    # [deprecated] I18n.enforce_available_locales will default to true in the future
+    I18n.enforce_available_locales = true
+
   end
 end
