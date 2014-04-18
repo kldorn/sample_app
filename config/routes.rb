@@ -1,9 +1,17 @@
 SampleApp::Application.routes.draw do  
  
   # Listing 5.35
-  get "users/new"
-  
-  # These book examples are supposed to be exchangable
+  #get "users/new"   
+  #Listing 7.3. Adding a Users resource to the routes file. 
+  # "get "users/new" is replaced by "resources :users"
+  resources :users
+  #Ensures that the Rails app responds to RESTful URL's or REST-style URL.
+  #Ensures that that a POST request to /users is handled by the create action.
+
+  root  'static_pages#home'
+  match '/signup',  to: 'users#new', via: 'get'
+
+    # These book examples are supposed to be exchangable
   # Neither works in isolation.
   #root  'static_pages#home'  
   #match '/', to: 'static_pages#home', via: 'get'
@@ -14,8 +22,8 @@ SampleApp::Application.routes.draw do
 
   # This combination works with either. But you need both statements.
   # http://localhost:3000/ or http://localhost:3000/static_pages/home
-  root  'static_pages#home'
-  get "static_pages/home"
+  #root  'static_pages#home'
+  #get "static_pages/home"
 
   match '/signup',  to: 'users#new',            via: 'get'
 

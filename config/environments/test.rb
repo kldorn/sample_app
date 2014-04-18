@@ -5,6 +5,9 @@ SampleApp::Application.configure do
   # test suite. You never need to work with it otherwise. Remember that
   # your test database is "scratch space" for the test suite and is wiped
   # and recreated between test runs. Don't rely on the data there!
+  
+  # See notes on Rails Tutorial Listing 7.11 at the end. 
+
   config.cache_classes = true
 
   # Do not eager load code on boot. This avoids loading your whole application
@@ -33,4 +36,9 @@ SampleApp::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  #Listing 7.11. Redefining the Bcrypt cost factor in a test environment. 
+  # Speed up tests by lowering bcrypt's cost function.
+  ActiveModel::SecurePassword.min_cost = true
+
 end

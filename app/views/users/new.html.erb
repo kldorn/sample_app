@@ -1,3 +1,36 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+
+<!-- Listing 7.17. A form to sign up new users. --> 
+<!--<p>Find me in app/views/users/new.html.erb</p> --> 
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+    <!-- form_for helper method -->
+    <!-- Embedded Ruby generates the HTML -->
+    <!-- @user defined in app/controllers/users_controller.rb -->
+
+    <!-- Listing 7.23. display errorson the signup form. 
+ -->
+    <%= render 'shared/error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <!-- <label for="user_name">Name</label> -->
+		<!-- <input id="user_name" name="user[name]" type="text" /> -->
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <!-- <label for="user_password">Password</label><br /> -->
+      <!-- <input id="user_password" name="user[password]" type="password" /> -->
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

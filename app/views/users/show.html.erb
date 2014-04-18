@@ -1,0 +1,20 @@
+<!-- Listing 7.4. A stub view for showing user information. -->
+ <!-- app/views/users/show.html.erb  --> 
+
+ <!-- @user defined in \app\controllers\users_controller.rb  --> 
+<%= @user.name %>, <%= @user.email %>
+
+<!-- Listing 7.14. Adding a sidebar to the user show view. --> 
+<% provide(:title, @user.name) %>
+
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+      	<!--return a Gravator image associated with user --> 
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+    </section>
+  </aside>
+</div>

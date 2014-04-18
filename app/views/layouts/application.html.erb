@@ -12,8 +12,21 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
+
+      <!-- Listing 7.27. Adding flash variable to site layout. -->
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+
+
       <%= yield %>
       <%= render 'layouts/footer' %>
+      <!-- Listing 7.1. Adding some debug information to the site layout. --> 
+      <%= debug(params) if Rails.env.development? %>
+      <!-- This displays some useful information about each page -->
+      <!-- using the built-in debug method and params variable.  -->
+      <!-- the "if Rails.env.development?" statement suppresses  -->
+      <!-- the debug window in production mode.  -->
     </div>
   </body>
 </html>
