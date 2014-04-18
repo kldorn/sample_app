@@ -15,9 +15,10 @@
 
       <!-- Listing 7.27. Adding flash variable to site layout. -->
       <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
+        <!-- <div class="alert alert-<%= key %>"><%= value %></div> -->
+        <!-- Listing 7.33. The flash ERb in site layout using content_tag. -->
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
-
 
       <%= yield %>
       <%= render 'layouts/footer' %>
