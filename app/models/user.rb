@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
 	# This converts the email address to all lower case before saving
 
+	#Listing 8.18. A before_create callback method to create remember_token. 
+	# immediately before creating a new user in the database.
+	before_create :create_remember_token
+  # Calls create_remember_token method before creating the user
+
 	#Listing 6.12. Adding a length validation for the name attribute. 
 	validates :name,  presence: true, length: { maximum: 50 }
 
@@ -36,5 +41,17 @@ class User < ActiveRecord::Base
 
    	#Listing 6.29. The complete implementation for secure passwords. 
    	validates :password, length: { minimum: 6 }
+
+	# Listing 8.18. A before_create callback to create remember_token. 
+	def User.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+  def User.digest(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+  private
+  def create_remember_token
+    self.remember_token = User.digest(User.new_remember_token)
+  end
 
 end

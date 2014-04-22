@@ -28,9 +28,14 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
 
+  #Listing 8.15. A first test for the remember token. 
+  # User ID is stored 
+  it { should respond_to(:remember_token) }
+  # Dependent on class class AddRememberTokenToUsers < ActiveRecord::Migration
+  # Listing 8.16. A migration to add a remember_token to the users table. 
+
   #Listing 6.28. Tests for password length and the authenticate method. 
   it { should respond_to(:authenticate) }
-
 
   #Listing 6.8. A failing test for validation of the name attribute. 
   it { should be_valid }
@@ -120,7 +125,7 @@ describe User do
 
 
 #Listing 6.28. Tests for password length and the authenticate method.
- describe "with a password that's too short" do
+  describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
     it { should be_invalid }
   end
@@ -141,5 +146,10 @@ describe User do
     end
   end
 
+  # Listing 8.17. A test for a valid (nonblank) remember token. 
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
 
 end

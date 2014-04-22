@@ -20,6 +20,9 @@ class UsersController < ApplicationController
     #returns initialization hash in place of [:user]
 
     if @user.save      # Handle a successful save.
+      # Listing 8.27. Signing in the user upon signup. 
+      # sign_in method defined in listing 8.27
+      sign_in @user
       # Listing 7.28. Adding a flash message to user signup. 
       flash[:success] = "Welcome to the Sample App!"
       # Listing 7.26. User create action with save and redirect. 

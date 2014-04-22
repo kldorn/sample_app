@@ -8,10 +8,25 @@ SampleApp::Application.routes.draw do
   #Ensures that the Rails app responds to RESTful URL's or REST-style URL.
   #Ensures that that a POST request to /users is handled by the create action.
 
-  root  'static_pages#home'
-  match '/signup',  to: 'users#new', via: 'get'
+  #Listing 8.2. Adding a resource to get the standard RESTful actions for sessions. 
+  # For security, restrict actions - Don't need a show or edit method
+  resources :sessions, only: [:new, :create, :destroy]
 
-    # These book examples are supposed to be exchangable
+  root  'static_pages#home'
+  
+  match '/signup',  to: 'users#new', via: 'get'
+  # signout_path
+
+  #Listing 8.2. Adding a resource to get the standard RESTful actions for sessions. 
+  # signin_path
+  match '/signin',  to: 'sessions#new',         via: 'get'
+
+  # signout_path
+  # via: 'delete' which indicates that it should be invoked using an HTTP DELETE request.
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
+
+
+  # These book examples are supposed to be exchangable
   # Neither works in isolation.
   #root  'static_pages#home'  
   #match '/', to: 'static_pages#home', via: 'get'
@@ -24,8 +39,7 @@ SampleApp::Application.routes.draw do
   # http://localhost:3000/ or http://localhost:3000/static_pages/home
   #root  'static_pages#home'
   #get "static_pages/home"
-
-  match '/signup',  to: 'users#new',            via: 'get'
+  # match '/signup',  to: 'users#new',            via: 'get'
 
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'

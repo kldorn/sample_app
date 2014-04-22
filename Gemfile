@@ -33,6 +33,9 @@ group :test do
   # Defines domain specific language for defining 
   # Active Record objects.
   gem 'factory_girl_rails', '4.2.1'
+  # Listing 8.31. Adding the cucumber-rails gem to the Gemfile. 
+  gem 'cucumber-rails', '1.4.0', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
 end
 
 # Use SCSS for stylesheets
