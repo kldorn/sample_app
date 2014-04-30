@@ -15,6 +15,11 @@ gem 'sprockets', '2.11.0'
 #Listing 6.21. Adding bcrypt-ruby to the Gemfile. 
 gem 'bcrypt-ruby', '3.1.2'
 
+#Listing 9.28: Adding the Faker gem to the Gemfile.
+gem 'faker', '1.1.2'
+
+#Listing 9.30: Including will_paginate in the Gemfile.
+gem 'will_paginate', '3.0.4'
 
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'

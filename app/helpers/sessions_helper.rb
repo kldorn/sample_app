@@ -40,6 +40,12 @@ module SessionsHelper
     #but only if @current_user is undefined.
   end
 
+  # Listing 9.15: The current_user? method.
+  # current_user method defined in app/controllers/users_controller.rb
+  def current_user?(user)
+    user == current_user
+  end
+
   # Listing 8.30. The sign_out method in the Sessions helper module.
   def sign_out
     current_user.update_attribute(:remember_token,
@@ -51,5 +57,18 @@ module SessionsHelper
     self.current_user = nil
   end
 
+  # Listing 9.17: Code to implement friendly forwarding.
+  # In order to forward users to their intended destination, 
+  # we need to store the location of the requested page somewhere,
+  # and then redirect to that location instead. 
+  # We accomplish this with a pair of methods, 
+  # store_location and redirect_back_or. 
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
+  end
+  def store_location
+    session[:return_to] = request.url if request.get?
+  end
 
 end

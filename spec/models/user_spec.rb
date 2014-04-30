@@ -37,8 +37,25 @@ describe User do
   #Listing 6.28. Tests for password length and the authenticate method. 
   it { should respond_to(:authenticate) }
 
+  #Listing 9.38: Tests for an admin attribute.
+  it { should respond_to(:admin) }
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+      #The toggle! method flips the admin attribute from false to true.
+    end
+    it { should be_admin }
+    #implies (via the RSpec boolean convention) 
+    #that the user should have an admin? boolean method.
+    #admin is a new attribute on user
+  end
+
   #Listing 6.8. A failing test for validation of the name attribute. 
   it { should be_valid }
+
+  #Listing 9.38: Tests for an admin attribute.
+  it { should_not be_admin }
 
   #Listing 6.8. A failing test for validation of the name attribute. 
   describe "when name is not present" do

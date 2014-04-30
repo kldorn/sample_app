@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 	def new
   end
 
-  	#Listing 8.10. An (unsuccessful) attempt at handling failed signin. 
+  #Listing 8.10. An (unsuccessful) attempt at handling failed signin. 
   def create
   	# the params has has all the information needed to authenticate the user
   	user = User.find_by(email: params[:session][:email].downcase)
@@ -16,7 +16,11 @@ class SessionsController < ApplicationController
       #Listing 8.13. The completed Sessions controller create action (not yet working). 
       # Sign the user in and redirect to the user's show page. 
       sign_in user
-      redirect_to user
+
+      #Listing 9.19: The Sessions create action with friendly forwarding.
+      #redirect_to user
+      redirect_back_or user
+      #redirect_back_or user defined in /app/helpers/sessions_helper.rb
     else
       #Listing 8.12. Correct code for failed signin. Using flash.now
       flash.now[:error] = 'Invalid email/password combination' # Not quite right!      		

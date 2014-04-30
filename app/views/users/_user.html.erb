@@ -1,0 +1,17 @@
+<!-- app/views/users/_user.html.erb -->
+
+<!-- Listing 9.36: A partial to render a single user. -->
+<!-- Called by "<%= render @users %> %>" statement in -->
+<!-- 	app/views/users/index.html.erb -->
+
+ <li>
+  <%= gravatar_for user, size: 52 %>
+  <%= link_to user.name, user %>
+
+  <!-- 	Listing 9.43: User delete links (viewable only by admins). -->
+  <% if current_user.admin? && !current_user?(user) %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+  
+</li>

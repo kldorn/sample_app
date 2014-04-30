@@ -1,0 +1,23 @@
+<!-- app/views/users/index.html.erb  --> 
+<!-- Listing 9.24: The user index view.  --> 
+
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<!-- Listing 9.33: The user index with pagination --> 
+<%= will_paginate %>
+  
+  	<!-- DOES NOT WORK Listing 9.35 & 9.37: refactoring at the index view -->
+  	<!-- user li from Listing 9.33 replaced with a render  -->
+  	<!-- Rails looks for a new partial called _user.html.erb,  -->
+  <ul class="users">
+  	<% @users.each do |user| %>
+      <li>
+        <%= gravatar_for user, size: 52 %>
+      	<%= link_to user.name, user %>
+    	</li>
+  	<% end %>
+	</ul>
+
+<!-- Listing 9.33: The user index with pagination --> 
+<%= will_paginate %>
